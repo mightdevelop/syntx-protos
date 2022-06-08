@@ -1,0 +1,19 @@
+{
+  "name": "syntx-protos",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/requiemDevelop/syntx-protos.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/requiemDevelop/syntx-protos/issues"
+  },
+  "homepage": "https://github.com/requiemDevelop/syntx-protos#readme"
+}
