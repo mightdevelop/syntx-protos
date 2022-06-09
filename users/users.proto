@@ -5,11 +5,11 @@ package users;
 message Void {}
 
 message UserIdRequest {
-    int32 userId = 1;
+    string userId = 1;
 }
 
 message User {
-    int32 id = 1;
+    string id = 1;
     string name = 2;
 }
 
