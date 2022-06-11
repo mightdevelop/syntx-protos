@@ -4,16 +4,23 @@ package users;
 
 message Void {}
 
-message UserIdRequest {
-    string userId = 1;
-}
-
 message User {
     string id = 1;
     string name = 2;
 }
 
+message UserIdRequest {
+    string userId = 1;
+}
+
+message CreateUserRequest {
+    string email = 1;
+    string username = 2;
+    string password = 3;
+}
+
 service UsersService {
     rpc getUsers(Void) returns (stream User) {}
     rpc getUserById(UserIdRequest) returns (User) {}
+    rpc createUser(CreateUserRequest) returns (User) {}
 }
