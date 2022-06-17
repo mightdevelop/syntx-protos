@@ -2,9 +2,12 @@ syntax = "proto3";
 
 package auth;
 
+import "google/protobuf/timestamp.proto";
+
 message Tokens {
     string accessToken = 1;
     string refreshToken = 2;
+    google.protobuf.Timestamp expiresIn = 3;
 }
 
 message Success {} // ответ после успешного logout
