@@ -30,7 +30,7 @@ message LogoutRequest {
     string accessToken = 1;
 }
 
-service UsersService {
+service AuthService {
     rpc register(RegisterRequest) returns (Tokens) {}
     rpc login(LoginRequest) returns (Tokens) {}
     rpc refresh(RefreshTokensRequest) returns (Tokens) {}
