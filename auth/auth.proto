@@ -24,7 +24,8 @@ message LoginRequest {
 }
 
 message RefreshTokensRequest {
-    string refreshToken = 1;
+    string userId = 1;
+    string refreshToken = 2;
 }
 
 message LogoutRequest {
