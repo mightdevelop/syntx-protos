@@ -10,6 +10,12 @@ message Tokens {
     google.protobuf.Timestamp expiresIn = 3;
 }
 
+message AccessTokenPayload {
+    string id = 1;
+    string email = 2;
+    google.protobuf.Timestamp exp = 3;
+}
+
 message Success {} // ответ после успешного logout
 
 message RegisterRequest {
@@ -31,9 +37,14 @@ message LogoutRequest {
     string accessToken = 1;
 }
 
+message ValidateAccessTokenRequest {
+    string accessToken = 1;
+}
+
 service AuthService {
     rpc register(RegisterRequest) returns (Tokens) {}
     rpc login(LoginRequest) returns (Tokens) {}
     rpc refresh(RefreshTokensRequest) returns (Tokens) {}
     rpc logout(LogoutRequest) returns (Success) {}
+    rpc validateAccessToken(ValidateAccessTokenRequest) returns (AccessTokenPayload) {}
 }
