@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package auth;
+package projects;
 
 message Project {
     string id = 1;
