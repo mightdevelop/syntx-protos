@@ -76,8 +76,13 @@ message CreateInviteRequest {
     string userId = 2;
 }
 
-message DeleteInviteRequest {
+message DeleteInviteByIdRequest {
     string inviteId = 1;
+}
+
+message DeleteInviteByUserIdAndProjectIdRequest {
+    string projectId = 1;
+    string userId = 2;
 }
 
 service InvitesService {
@@ -85,5 +90,6 @@ service InvitesService {
     rpc getInvitesByUserId(InvitesByUserIdRequest) returns (stream Invite) {}
     rpc getInvitesByProjectId(InvitesByProjectIdRequest) returns (stream Invite) {}
     rpc createInvite(CreateInviteRequest) returns (Invite) {}
-    rpc deleteInvite(DeleteInviteRequest) returns (Invite) {}
+    rpc deleteInviteById(DeleteInviteByIdRequest) returns (Invite) {}
+    rpc deleteInviteByUserIdAndProjectId(DeleteInviteByUserIdAndProjectIdRequest) returns (Invite) {}
 }
