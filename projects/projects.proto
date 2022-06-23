@@ -5,7 +5,7 @@ package auth;
 message Project {
     string id = 1;
     string name = 2;
-    string leadIn = 3;
+    string leadId = 3;
 }
 
 message ProjectByIdRequest {
@@ -16,12 +16,18 @@ message ProjectsByUserIdRequest {
     string userId = 1;
 }
 
+message ProjectsByLeadIdRequest {
+    string leadId = 1;
+}
+
 message CreateProjectRequest {
-    string name = 1;
+    string leadId = 1;
+    string name = 2;
 }
 
 message UpdateProjectRequest {
-    string name = 1;
+    string leadId = 1;
+    string name = 2;
 }
 
 message DeleteProjectRequest {
