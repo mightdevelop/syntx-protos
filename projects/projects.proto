@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+package auth;
+
+message Project {
+    string id = 1;
+    string name = 2;
+    string leadIn = 3;
+}
+
+message ProjectByIdRequest {
+    string projectId = 1;
+}
+
+message ProjectsByUserIdRequest {
+    string userId = 1;
+}
+
+message CreateProjectRequest {
+    string name = 1;
+}
+
+message UpdateProjectRequest {
+    string name = 1;
+}
+
+message DeleteProjectRequest {
+    string projectId = 1;
+}
+
+service AuthService {
+    rpc getProjectById(ProjectByIdRequest) returns (Project) {}
+    rpc getProjectsByUserId(ProjectsByUserIdRequest) returns (stream Project) {}
+    rpc createProject(CreateProjectRequest) returns (Project) {}
+    rpc updateProject(UpdateProjectRequest) returns (Project) {}
+    rpc deleteProject(DeleteProjectRequest) returns (Project) {}
+}
