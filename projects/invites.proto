@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package invites;
+
+message Invite {
+    string id = 1;
+    string userId = 2;
+    string projectId = 3;
+}
+
+message InviteByIdRequest {
+    string inviteId = 1;
+}
+
+message InvitesByUserIdRequest {
+    string userId = 1;
+}
+
+message InvitesByProjectIdRequest {
+    string projectId = 1;
+}
+
+message CreateInviteRequest {
+    string leadId = 1;
+    string name = 2;
+}
+
+message DeleteInviteRequest {
+    string inviteId = 1;
+}
+
+service InvitesService {
+    rpc getInviteById(InviteByIdRequest) returns (Invite) {}
+    rpc getInvitesByUserId(InvitesByUserIdRequest) returns (stream Invite) {}
+    rpc getInvitesByProjectId(InvitesByProjectIdRequest) returns (stream Invite) {}
+    rpc createInvite(CreateInviteRequest) returns (Invite) {}
+    rpc deleteInvite(DeleteInviteRequest) returns (Invite) {}
+}
