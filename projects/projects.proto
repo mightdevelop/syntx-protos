@@ -26,8 +26,9 @@ message CreateProjectRequest {
 }
 
 message UpdateProjectRequest {
-    string leadId = 1;
-    string name = 2;
+    string projectId = 1;
+    string leadId = 2;
+    string name = 3;
 }
 
 message DeleteProjectRequest {
