@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package projects;
 
+message Void {}
+
 message Project {
     string id = 1;
     string name = 2;
@@ -35,6 +37,11 @@ message DeleteProjectRequest {
     string projectId = 1;
 }
 
+message ProjectUserRequest {
+    string projectId = 1;
+    string userId = 2;
+}
+
 service ProjectsService {
     rpc getProjectById(ProjectByIdRequest) returns (Project) {}
     rpc getProjectsByUserId(ProjectsByUserIdRequest) returns (stream Project) {}
@@ -42,6 +49,8 @@ service ProjectsService {
     rpc createProject(CreateProjectRequest) returns (Project) {}
     rpc updateProject(UpdateProjectRequest) returns (Project) {}
     rpc deleteProject(DeleteProjectRequest) returns (Project) {}
+    rpc addUserToProject(ProjectUserRequest) returns (Void) {}
+    rpc removeUserFromProject(ProjectUserRequest) returns (Void) {}
 }
 
 message Invite {
