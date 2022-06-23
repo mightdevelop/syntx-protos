@@ -35,7 +35,7 @@ message DeleteProjectRequest {
     string projectId = 1;
 }
 
-service AuthService {
+service ProjectsService {
     rpc getProjectById(ProjectByIdRequest) returns (Project) {}
     rpc getProjectsByUserId(ProjectsByUserIdRequest) returns (stream Project) {}
     rpc createProject(CreateProjectRequest) returns (Project) {}
