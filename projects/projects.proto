@@ -38,6 +38,7 @@ message DeleteProjectRequest {
 service ProjectsService {
     rpc getProjectById(ProjectByIdRequest) returns (Project) {}
     rpc getProjectsByUserId(ProjectsByUserIdRequest) returns (stream Project) {}
+    rpc getProjectsByLeadId(ProjectsByUserIdRequest) returns (stream Project) {}
     rpc createProject(CreateProjectRequest) returns (Project) {}
     rpc updateProject(UpdateProjectRequest) returns (Project) {}
     rpc deleteProject(DeleteProjectRequest) returns (Project) {}
