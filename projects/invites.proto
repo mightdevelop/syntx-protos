@@ -21,8 +21,8 @@ message InvitesByProjectIdRequest {
 }
 
 message CreateInviteRequest {
-    string leadId = 1;
-    string name = 2;
+    string projectId = 1;
+    string userId = 2;
 }
 
 message DeleteInviteRequest {
