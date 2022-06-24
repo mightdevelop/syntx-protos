@@ -1,0 +1,90 @@
+syntax = "proto3";
+
+package roles;
+
+message Void {}
+
+message Role {
+    string id = 1;
+    string name = 2;
+}
+
+message RoleByIdRequest {
+    string roleId = 1;
+}
+
+message RolesByUserIdRequest {
+    string userId = 1;
+}
+
+message UsersIdsByRoleIdRequest {
+    string roleId = 1;
+}
+
+message CreateRoleRequest {
+    string name = 1;
+}
+
+message UpdateRoleRequest {
+    string roleId = 1;
+    string name = 2;
+}
+
+message DeleteRoleRequest {
+    string roleId = 1;
+}
+
+message RoleIdAndUserIdRequest {
+    string roleId = 1;
+    string userId = 2;
+}
+
+message UserIdResponse {
+    string userId = 1;
+}
+
+service RolesService {
+    rpc getRoleById(RoleByIdRequest) returns (Role) {}
+    rpc getRolesByUserId(RolesByUserIdRequest) returns (stream Role) {}
+    rpc getUsersIdsByRoleId(UsersIdsByRoleIdRequest) returns (stream UserIdResponse) {}
+    rpc createRole(CreateRoleRequest) returns (Role) {}
+    rpc updateRole(UpdateRoleRequest) returns (Role) {}
+    rpc deleteRole(DeleteRoleRequest) returns (Role) {}
+    rpc addRoleToUser(RoleIdAndUserIdRequest) returns (Void) {}
+    rpc removeRoleFromUser(RoleIdAndUserIdRequest) returns (Void) {}
+}
+
+message Permission {
+    int32 id = 1;
+    string name = 2;
+}
+
+message PermissionByIdRequest {
+    int32 permissionId = 1;
+}
+
+message PermissionsByUserIdRequest {
+    string userId = 1;
+}
+
+message PermissionsByRoleIdRequest {
+    string roleId = 1;
+}
+
+message AddPermissionToUserRequest {
+    int32 permissionId = 1;
+    string userId = 2;
+}
+
+message AddPermissionToRoleRequest {
+    int32 permissionId = 1;
+    string roleId = 2;
+}
+
+service PermissionsService {
+    rpc getPermissionById(PermissionByIdRequest) returns (Permission) {}
+    rpc getPermissionsByUserId(PermissionsByUserIdRequest) returns (stream Permission) {}
+    rpc getPermissionsByRoleId(PermissionsByRoleIdRequest) returns (stream Permission) {}
+    rpc addPermissionToUser(AddPermissionToUserRequest) returns (Void) {}
+    rpc addPermissionToRole(AddPermissionToRoleRequest) returns (Void) {}
+}
