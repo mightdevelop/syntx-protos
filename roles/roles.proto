@@ -6,7 +6,7 @@ message Void {}
 
 message Role {
     string id = 1;
-    string groupId = 2;
+    string projectId = 2;
     string name = 3;
 }
 message RoleByNameRequest {
@@ -14,7 +14,7 @@ message RoleByNameRequest {
 }
 
 message CreateRoleRequest {
-    string groupId = 1;
+    string projectId = 1;
     string name = 2;
 }
 
@@ -31,8 +31,13 @@ message UserId {
     string userId = 1;
 }
 
-message GroupId {
-    string groupId = 1;
+message UserIdAndProjectId {
+    string userId = 1;
+    string projectId = 2;
+}
+
+message ProjectId {
+    string projectId = 1;
 }
 
 message RoleIdAndUserId {
@@ -43,8 +48,8 @@ message RoleIdAndUserId {
 service RolesService {
     rpc getRoleById(RoleId) returns (Role) {}
     rpc getRoleByName(RoleByNameRequest) returns (Role) {}
-    rpc getRolesByUserId(UserId) returns (stream Role) {}
-    rpc getRolesByGroupId(GroupId) returns (stream Role) {}
+    rpc getRolesByUserIdAndProjectId(UserIdAndProjectId) returns (stream Role) {}
+    rpc getRolesByProjectId(ProjectId) returns (stream Role) {}
     rpc getUsersIdsByRoleId(RoleId) returns (stream UserId) {}
     rpc createRole(CreateRoleRequest) returns (Role) {}
     rpc updateRole(RoleIdAndName) returns (Role) {}
@@ -74,7 +79,7 @@ message PermissionIdAndRoleId {
 
 service PermissionsService {
     rpc getPermissionById(PermissionId) returns (Permission) {}
-    rpc getPermissionsByUserId(UserId) returns (stream Permission) {}
+    rpc getPermissionsByUserIdAndProjectId(UserIdAndProjectId) returns (stream Permission) {}
     rpc getPermissionsByRoleId(RoleId) returns (stream Permission) {}
     rpc addPermissionToUser(PermissionIdAndUserId) returns (Void) {}
     rpc addPermissionToRole(PermissionIdAndRoleId) returns (Void) {}
