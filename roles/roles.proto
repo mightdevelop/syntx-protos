@@ -6,57 +6,51 @@ message Void {}
 
 message Role {
     string id = 1;
-    string name = 2;
+    string groupId = 2;
+    string name = 3;
 }
-
-message RoleByIdRequest {
-    string roleId = 1;
-}
-
 message RoleByNameRequest {
     string roleName = 1;
 }
 
-message RolesByUserIdRequest {
-    string userId = 1;
-}
-
-message UsersIdsByRoleIdRequest {
-    string roleId = 1;
-}
-
 message CreateRoleRequest {
-    string name = 1;
+    string groupId = 1;
+    string name = 2;
 }
 
-message UpdateRoleRequest {
+message RoleIdAndName {
     string roleId = 1;
     string name = 2;
 }
 
-message DeleteRoleRequest {
+message RoleId {
     string roleId = 1;
 }
 
-message RoleIdAndUserIdRequest {
+message UserId {
+    string userId = 1;
+}
+
+message GroupId {
+    string groupId = 1;
+}
+
+message RoleIdAndUserId {
     string roleId = 1;
     string userId = 2;
 }
 
-message UserIdResponse {
-    string userId = 1;
-}
-
 service RolesService {
-    rpc getRoleById(RoleByIdRequest) returns (Role) {}
+    rpc getRoleById(RoleId) returns (Role) {}
     rpc getRoleByName(RoleByNameRequest) returns (Role) {}
-    rpc getRolesByUserId(RolesByUserIdRequest) returns (stream Role) {}
-    rpc getUsersIdsByRoleId(UsersIdsByRoleIdRequest) returns (stream UserIdResponse) {}
+    rpc getRolesByUserId(UserId) returns (stream Role) {}
+    rpc getRolesByGroupId(GroupId) returns (stream Role) {}
+    rpc getUsersIdsByRoleId(RoleId) returns (stream UserId) {}
     rpc createRole(CreateRoleRequest) returns (Role) {}
-    rpc updateRole(UpdateRoleRequest) returns (Role) {}
-    rpc deleteRole(DeleteRoleRequest) returns (Role) {}
-    rpc addRoleToUser(RoleIdAndUserIdRequest) returns (Void) {}
-    rpc removeRoleFromUser(RoleIdAndUserIdRequest) returns (Void) {}
+    rpc updateRole(RoleIdAndName) returns (Role) {}
+    rpc deleteRole(RoleId) returns (Role) {}
+    rpc addRoleToUser(RoleIdAndUserId) returns (Void) {}
+    rpc removeRoleFromUser(RoleIdAndUserId) returns (Void) {}
 }
 
 message Permission {
@@ -64,32 +58,26 @@ message Permission {
     string name = 2;
 }
 
-message PermissionByIdRequest {
+message PermissionId {
     int32 permissionId = 1;
 }
 
-message PermissionsByUserIdRequest {
-    string userId = 1;
-}
-
-message PermissionsByRoleIdRequest {
-    string roleId = 1;
-}
-
-message AddPermissionToUserRequest {
+message PermissionIdAndUserId {
     int32 permissionId = 1;
     string userId = 2;
 }
 
-message AddPermissionToRoleRequest {
+message PermissionIdAndRoleId {
     int32 permissionId = 1;
     string roleId = 2;
 }
 
 service PermissionsService {
-    rpc getPermissionById(PermissionByIdRequest) returns (Permission) {}
-    rpc getPermissionsByUserId(PermissionsByUserIdRequest) returns (stream Permission) {}
-    rpc getPermissionsByRoleId(PermissionsByRoleIdRequest) returns (stream Permission) {}
-    rpc addPermissionToUser(AddPermissionToUserRequest) returns (Void) {}
-    rpc addPermissionToRole(AddPermissionToRoleRequest) returns (Void) {}
+    rpc getPermissionById(PermissionId) returns (Permission) {}
+    rpc getPermissionsByUserId(UserId) returns (stream Permission) {}
+    rpc getPermissionsByRoleId(RoleId) returns (stream Permission) {}
+    rpc addPermissionToUser(PermissionIdAndUserId) returns (Void) {}
+    rpc addPermissionToRole(PermissionIdAndRoleId) returns (Void) {}
+    rpc removePermissionFromUser(PermissionIdAndUserId) returns (Void) {}
+    rpc removePermissionFromRole(PermissionIdAndRoleId) returns (Void) {}
 }
