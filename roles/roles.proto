@@ -87,6 +87,7 @@ service PermissionsService {
     rpc getPermissionsByUserIdAndProjectId(UserIdAndProjectId) returns (stream Permission) {}
     rpc getPermissionsByRoleId(RoleId) returns (stream Permission) {}
     rpc doesUserHavePermission(PermissionIdAndUserIdAndProjectId) returns (Bool) {}
+    rpc doesRoleHavePermission(PermissionIdAndRoleId) returns (Bool) {}
     rpc addPermissionToUserInProject(PermissionIdAndUserIdAndProjectId) returns (Void) {}
     rpc addPermissionToRole(PermissionIdAndRoleId) returns (Void) {}
     rpc removePermissionFromUserInProject(PermissionIdAndUserIdAndProjectId) returns (Void) {}
