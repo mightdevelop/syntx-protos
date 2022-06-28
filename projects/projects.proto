@@ -55,7 +55,7 @@ service ProjectsService {
     rpc getProjectsByUserId(ProjectsByUserIdRequest) returns (stream Project) {}
     rpc getProjectsByLeadId(ProjectsByLeadIdRequest) returns (stream Project) {}
     rpc getMutualProjectsByUsersIds(UsersIds) returns (stream Project) {}
-    rpc isUserProjectPerticipant(ProjectIdAndUserId) returns (Bool) {}
+    rpc isUserProjectParticipant(ProjectIdAndUserId) returns (Bool) {}
     rpc createProject(CreateProjectRequest) returns (Project) {}
     rpc updateProject(UpdateProjectRequest) returns (Project) {}
     rpc deleteProject(DeleteProjectRequest) returns (Project) {}
