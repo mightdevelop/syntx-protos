@@ -4,6 +4,14 @@ package projects;
 
 message Void {}
 
+message Bool {
+    bool bool = 1;
+}
+
+message UsersIds {
+    repeated string usersIds = 1;
+}
+
 message Project {
     string id = 1;
     string name = 2;
@@ -37,7 +45,7 @@ message DeleteProjectRequest {
     string projectId = 1;
 }
 
-message ProjectUserRequest {
+message ProjectIdAndUserId {
     string projectId = 1;
     string userId = 2;
 }
@@ -46,11 +54,13 @@ service ProjectsService {
     rpc getProjectById(ProjectByIdRequest) returns (Project) {}
     rpc getProjectsByUserId(ProjectsByUserIdRequest) returns (stream Project) {}
     rpc getProjectsByLeadId(ProjectsByLeadIdRequest) returns (stream Project) {}
+    rpc getMutualProjectsByUsersIds(UsersIds) returns (stream Project) {}
+    rpc isUserProjectPerticipant(ProjectIdAndUserId) returns (Bool) {}
     rpc createProject(CreateProjectRequest) returns (Project) {}
     rpc updateProject(UpdateProjectRequest) returns (Project) {}
     rpc deleteProject(DeleteProjectRequest) returns (Project) {}
-    rpc addUserToProject(ProjectUserRequest) returns (Void) {}
-    rpc removeUserFromProject(ProjectUserRequest) returns (Void) {}
+    rpc addUserToProject(ProjectIdAndUserId) returns (Void) {}
+    rpc removeUserFromProject(ProjectIdAndUserId) returns (Void) {}
 }
 
 message Invite {
