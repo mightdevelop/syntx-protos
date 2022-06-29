@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package projects;
+package boards;
 
 message Void {}
 
