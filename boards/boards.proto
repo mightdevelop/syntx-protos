@@ -65,10 +65,6 @@ message Issue {
     string columnId = 3;
 }
 
-message InviteByIdRequest {
-    string inviteId = 1;
-}
-
 message CreateIssueRequest {
     string columnId = 1;
     string title = 2;
