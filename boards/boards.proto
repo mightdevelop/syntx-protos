@@ -70,7 +70,7 @@ message InviteByIdRequest {
 }
 
 message CreateIssueRequest {
-    string boardId = 1;
+    string columnId = 1;
     string title = 2;
     string body = 3;
 }
