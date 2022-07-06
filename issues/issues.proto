@@ -38,7 +38,6 @@ message IssueId {
 
 service IssuesService {
     rpc getIssueById(IssueId) returns (Issue) {}
-    rpc getIssuesByBoardId(BoardId) returns (stream Issue) {}
     rpc getIssuesByColumnId(ColumnId) returns (stream Issue) {}
     rpc createIssue(CreateIssueRequest) returns (Issue) {}
     rpc updateIssue(UpdateIssueRequest) returns (Issue) {}
