@@ -4,10 +4,6 @@ package issues;
 
 message Void {}
 
-message BoardId {
-    string boardId = 1;
-}
-
 message ColumnId {
     string columnId = 1;
 }
