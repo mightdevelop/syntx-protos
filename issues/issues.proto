@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+package issues;
+
+message Void {}
+
+message BoardId {
+    string boardId = 1;
+}
+
+message ColumnId {
+    string columnId = 1;
+}
+
+message Issue {
+    string id = 1;
+    string columnId = 2;
+    string title = 3;
+    string body = 4;
+}
+
+message CreateIssueRequest {
+    string columnId = 1;
+    string title = 2;
+    string body = 3;
+}
+
+message UpdateIssueRequest {
+    string issueId = 1;
+    optional string title = 2;
+    optional string body = 3;
+    optional string columnId = 4;
+}
+
+message IssueId {
+    string issueId = 1;
+}
+
+service IssuesService {
+    rpc getIssueById(IssueId) returns (Issue) {}
+    rpc getIssuesByBoardId(BoardId) returns (stream Issue) {}
+    rpc getIssuesByColumnId(ColumnId) returns (stream Issue) {}
+    rpc createIssue(CreateIssueRequest) returns (Issue) {}
+    rpc updateIssue(UpdateIssueRequest) returns (Issue) {}
+    rpc deleteIssueById(IssueId) returns (Issue) {}
+}
