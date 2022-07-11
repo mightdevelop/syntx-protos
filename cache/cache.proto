@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package cache;
+
+message Void {}
+
+message Cache {
+    string data = 1;
+}
+
+message CacheKey {
+    string rpcMethod = 1;
+    string rpcArg = 2;
+}
+
+message CacheIdAndUserId {
+    string cacheId = 1;
+    string userId = 2;
+}
+
+service CachesService {
+    rpc getCacheByKey(CacheKey) returns (Cache) {}
+    rpc setCacheByKey(CacheKey) returns (Cache) {}
+}
