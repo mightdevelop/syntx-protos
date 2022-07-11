@@ -19,7 +19,7 @@ message CacheKey {
 message SetCacheRequest {
     CacheKey key = 1;
     repeated google.protobuf.Any data = 2;
-    int32 ttl = 3;
+    optional int32 ttl = 3;
 }
 
 service CacheService {
