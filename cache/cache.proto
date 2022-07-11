@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package cache;
 
+import "google/protobuf/any.proto";
+
 message Void {}
 
 message Cache {
@@ -9,11 +11,17 @@ message Cache {
 }
 
 message CacheKey {
-    string rpcMethod = 1;
-    string rpcArg = 2;
+    string packageName = 1;
+    string rpcMethod = 2;
+    string rpcArg = 3;
+}
+
+message CacheKeyAndData {
+    CacheKey key = 1;
+    repeated google.protobuf.Any data = 2;
 }
 
 service CacheService {
-    rpc getCacheByKey(CacheKey) returns (Cache) {}
-    rpc setCacheByKey(CacheKey) returns (Cache) {}
+    rpc getCacheByKey(CacheKeyAndData) returns (Cache) {}
+    rpc setCacheByKey(CacheKeyAndData) returns (Cache) {}
 }
