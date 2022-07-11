@@ -18,7 +18,7 @@ message CacheIdAndUserId {
     string userId = 2;
 }
 
-service CachesService {
+service CacheService {
     rpc getCacheByKey(CacheKey) returns (Cache) {}
     rpc setCacheByKey(CacheKey) returns (Cache) {}
 }
