@@ -16,12 +16,13 @@ message CacheKey {
     string rpcArg = 3;
 }
 
-message CacheKeyAndData {
+message SetCacheRequest {
     CacheKey key = 1;
     repeated google.protobuf.Any data = 2;
+    int32 ttl = 3;
 }
 
 service CacheService {
     rpc getCacheByKey(CacheKey) returns (Cache) {}
-    rpc setCacheByKey(CacheKeyAndData) returns (Cache) {}
+    rpc setCacheByKey(SetCacheRequest) returns (Cache) {}
 }
