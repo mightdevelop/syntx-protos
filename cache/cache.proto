@@ -22,6 +22,6 @@ message CacheKeyAndData {
 }
 
 service CacheService {
-    rpc getCacheByKey(CacheKeyAndData) returns (Cache) {}
+    rpc getCacheByKey(CacheKey) returns (Cache) {}
     rpc setCacheByKey(CacheKeyAndData) returns (Cache) {}
 }
