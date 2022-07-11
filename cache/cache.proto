@@ -13,11 +13,6 @@ message CacheKey {
     string rpcArg = 2;
 }
 
-message CacheIdAndUserId {
-    string cacheId = 1;
-    string userId = 2;
-}
-
 service CacheService {
     rpc getCacheByKey(CacheKey) returns (Cache) {}
     rpc setCacheByKey(CacheKey) returns (Cache) {}
