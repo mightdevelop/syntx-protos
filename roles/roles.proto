@@ -73,8 +73,19 @@ message PermissionIdAndUserIdAndProjectId {
     string projectId = 3;
 }
 
+message PermissionsIdsAndUserIdAndProjectId {
+    repeated int32 permissionsIds = 1;
+    string userId = 2;
+    string projectId = 3;
+}
+
 message PermissionIdAndRoleId {
     int32 permissionId = 1;
+    string roleId = 2;
+}
+
+message PermissionsIdsAndRoleId {
+    repeated int32 permissionsIds = 1;
     string roleId = 2;
 }
 
@@ -88,8 +99,8 @@ service PermissionsService {
     rpc getPermissionsByRoleId(RoleId) returns (stream Permission) {}
     rpc doesUserHavePermission(PermissionIdAndUserIdAndProjectId) returns (Bool) {}
     rpc doesRoleHavePermission(PermissionIdAndRoleId) returns (Bool) {}
-    rpc addPermissionToUserInProject(PermissionIdAndUserIdAndProjectId) returns (Void) {}
-    rpc addPermissionToRole(PermissionIdAndRoleId) returns (Void) {}
-    rpc removePermissionFromUserInProject(PermissionIdAndUserIdAndProjectId) returns (Void) {}
-    rpc removePermissionFromRole(PermissionIdAndRoleId) returns (Void) {}
+    rpc addPermissionsToUserInProject(PermissionsIdsAndUserIdAndProjectId) returns (Void) {}
+    rpc addPermissionsToRole(PermissionsIdsAndRoleId) returns (Void) {}
+    rpc removePermissionsFromUserInProject(PermissionsIdsAndUserIdAndProjectId) returns (Void) {}
+    rpc removePermissionsFromRole(PermissionsIdsAndRoleId) returns (Void) {}
 }
