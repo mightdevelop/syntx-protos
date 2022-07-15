@@ -39,7 +39,7 @@ message ChangeRolePermissionsRequest {
 }
 
 message Bool {
-    bool bool = 1;
+    optional bool bool = 1;
 }
 
 service PermissionsCacheService {
