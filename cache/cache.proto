@@ -24,5 +24,26 @@ message SetCacheRequest {
 
 service CacheService {
     rpc getCacheByKey(CacheKey) returns (Cache) {}
-    rpc setCacheByKey(SetCacheRequest) returns (Cache) {}
+    rpc setCacheByKey(SetCacheRequest) returns (Void) {}
+}
+
+message DoesUserHavePermissionRequest {
+    string userId = 1;
+    string projectId = 2;
+    string permissionId = 3;
+}
+
+message ChangeRolePermissionsRequest {
+    string roleId = 1;
+    repeated string permissionsIds = 2;
+}
+
+message Bool {
+    bool bool = 1;
+}
+
+service PermissionsCacheService {
+    rpc doesUserHavePermission(DoesUserHavePermissionRequest) returns (Bool) {}
+    rpc addPermissionsToRole(ChangeRolePermissionsRequest) returns (Void) {}
+    rpc removePermissionsFromRole(ChangeRolePermissionsRequest) returns (Void) {}
 }
