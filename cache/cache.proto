@@ -44,6 +44,5 @@ message Bool {
 
 service PermissionsCacheService {
     rpc doesUserHavePermission(DoesUserHavePermissionRequest) returns (Bool) {}
-    rpc addPermissionsToRole(ChangeRolePermissionsRequest) returns (Void) {}
     rpc removePermissionsFromRole(ChangeRolePermissionsRequest) returns (Void) {}
 }
