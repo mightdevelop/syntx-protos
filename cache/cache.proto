@@ -30,12 +30,12 @@ service CacheService {
 message DoesUserHavePermissionRequest {
     string userId = 1;
     string projectId = 2;
-    string permissionId = 3;
+    int32 permissionId = 3;
 }
 
 message ChangeRolePermissionsRequest {
     string roleId = 1;
-    repeated string permissionsIds = 2;
+    repeated int32 permissionsIds = 2;
 }
 
 message Bool {
