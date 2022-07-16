@@ -7,7 +7,7 @@ import "google/protobuf/any.proto";
 message Void {}
 
 message Cache {
-    google.protobuf.Any data = 1;
+    string data = 1;
 }
 
 message CacheKey {
@@ -18,7 +18,7 @@ message CacheKey {
 
 message SetCacheRequest {
     CacheKey key = 1;
-    repeated google.protobuf.Any data = 2;
+    repeated string data = 2;
     optional int32 ttl = 3;
 }
 
