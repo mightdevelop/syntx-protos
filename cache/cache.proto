@@ -2,8 +2,6 @@ syntax = "proto3";
 
 package cache;
 
-import "google/protobuf/any.proto";
-
 message Void {}
 
 message Cache {
