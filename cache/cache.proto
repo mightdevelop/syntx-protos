@@ -33,7 +33,12 @@ message DoesUserHavePermissionRequest {
     int32 permissionId = 3;
 }
 
-message ChangeRolePermissionsRequest {
+message AddRolePermissionsToUserRequest {
+    string userId = 1;
+    int32 permissionId = 2;
+}
+
+message RemovePermissionsFromRoleRequest {
     string roleId = 1;
     repeated int32 permissionsIds = 2;
 }
@@ -44,5 +49,6 @@ message Bool {
 
 service PermissionsCacheService {
     rpc doesUserHavePermission(DoesUserHavePermissionRequest) returns (Bool) {}
-    rpc removePermissionsFromRole(ChangeRolePermissionsRequest) returns (Void) {}
+    rpc addPermissionToUserInProject(AddRolePermissionsToUserRequest) returns (Void) {}
+    rpc removePermissionsFromRole(RemovePermissionsFromRoleRequest) returns (Void) {}
 }
