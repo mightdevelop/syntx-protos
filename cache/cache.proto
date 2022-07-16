@@ -7,7 +7,7 @@ import "google/protobuf/any.proto";
 message Void {}
 
 message Cache {
-    string data = 1;
+    google.protobuf.Any data = 1;
 }
 
 message CacheKey {
