@@ -16,7 +16,7 @@ message CacheKey {
 
 message SetCacheRequest {
     CacheKey key = 1;
-    repeated string data = 2;
+    string data = 2;
     optional int32 ttl = 3;
 }
 
