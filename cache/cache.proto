@@ -23,6 +23,7 @@ message SetCacheRequest {
 service CacheService {
     rpc getCacheByKey(CacheKey) returns (Cache) {}
     rpc setCacheByKey(SetCacheRequest) returns (Void) {}
+    rpc delCacheByKey(CacheKey) returns (Void) {}
 }
 
 message DoesUserHavePermissionRequest {
