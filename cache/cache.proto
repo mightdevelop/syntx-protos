@@ -35,8 +35,9 @@ message DoesUserHavePermissionRequest {
 
 message AddRolePermissionsToUserRequest {
     string userId = 1;
-    optional string roleId = 2;
-    int32 permissionId = 3;
+    string projectId = 2;
+    optional string roleId = 3;
+    int32 permissionId = 4;
 }
 
 message RemovePermissionsFromRoleRequest {
