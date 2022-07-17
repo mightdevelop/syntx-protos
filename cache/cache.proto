@@ -20,7 +20,8 @@ message EntitySearchParamsKey {
 
 message EntityKeyAndTtl {
     EntityKey entityKey = 1;
-    optional int32 ttl = 2;
+    string jsonEntity = 2;
+    optional int32 ttl = 3;
 }
 
 message EntitySearchParamsKeyAndTtl {
