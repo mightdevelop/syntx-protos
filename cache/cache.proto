@@ -8,22 +8,32 @@ message Cache {
     string data = 1;
 }
 
-message CacheKey {
-    string packageName = 1;
-    string rpcMethod = 2;
-    string rpcArg = 3;
+message EntityKey {
+    string entityName = 1;
+    string entityId = 2;
 }
 
-message SetCacheRequest {
-    CacheKey key = 1;
-    string data = 2;
-    optional int32 ttl = 3;
+message EntitySearchParamsKey {
+    string entityName = 1;
+    string jsonSearchParams = 2;
 }
 
-service CacheService {
-    rpc getCacheByKey(CacheKey) returns (Cache) {}
-    rpc setCacheByKey(SetCacheRequest) returns (Void) {}
-    rpc delCacheByKey(CacheKey) returns (Void) {}
+message EntityKeyAndTtl {
+    EntityKey entityKey = 1;
+    optional int32 ttl = 2;
+}
+
+message EntitySearchParamsKeyAndTtl {
+    EntitySearchParamsKey entitySearchParamsKey = 1;
+    optional int32 ttl = 2;
+}
+
+service EntitiesCacheService {
+    rpc getEntityByKey(EntityKey) returns (Cache) {}
+    rpc getEntitiesBySearchParamsKey(EntitySearchParamsKey) returns (Cache) {}
+    rpc setEntityByKey(EntityKeyAndTtl) returns (Void) {}
+    rpc setEntitiesBySearchParamsKey(EntitySearchParamsKeyAndTtl) returns (Void) {}
+    rpc delEntityByKey(EntityKey) returns (Void) {}
 }
 
 message DoesUserHavePermissionRequest {
