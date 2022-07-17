@@ -5,7 +5,7 @@ package cache;
 message Void {}
 
 message Cache {
-    string data = 1;
+    string jsonData = 1;
 }
 
 message EntityKey {
@@ -13,27 +13,28 @@ message EntityKey {
     string entityId = 2;
 }
 
-message EntitySearchParamsKey {
+message EntitiesSearchParamsKey {
     string entityName = 1;
     string jsonSearchParams = 2;
 }
 
-message EntityKeyAndTtl {
+message SetEntityByKey {
     EntityKey entityKey = 1;
-    string jsonEntity = 2;
+    string jsonData = 2;
     optional int32 ttl = 3;
 }
 
-message EntitySearchParamsKeyAndTtl {
-    EntitySearchParamsKey entitySearchParamsKey = 1;
-    optional int32 ttl = 2;
+message SetEntitiesBySearchParamsKey {
+    EntitiesSearchParamsKey searchParamsKey = 1;
+    string jsonData = 2;
+    optional int32 ttl = 3;
 }
 
 service EntitiesCacheService {
     rpc getEntityByKey(EntityKey) returns (Cache) {}
-    rpc getEntitiesBySearchParamsKey(EntitySearchParamsKey) returns (Cache) {}
-    rpc setEntityByKey(EntityKeyAndTtl) returns (Void) {}
-    rpc setEntitiesBySearchParamsKey(EntitySearchParamsKeyAndTtl) returns (Void) {}
+    rpc getEntitiesBySearchParamsKey(EntitiesSearchParamsKey) returns (Cache) {}
+    rpc setEntityByKey(SetEntityByKey) returns (Void) {}
+    rpc setEntitiesBySearchParamsKey(SetEntitiesBySearchParamsKey) returns (Void) {}
     rpc delEntityByKey(EntityKey) returns (Void) {}
 }
 
