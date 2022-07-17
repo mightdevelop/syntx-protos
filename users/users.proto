@@ -20,6 +20,8 @@ message SearchUsersParams {
     optional string email = 1;
     optional string username = 2;
     repeated string usersIds = 3;
+    optional int32 limit = 4;
+    optional int32 offset = 5;
 }
 
 message CreateUserRequest {
