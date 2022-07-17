@@ -34,7 +34,7 @@ service EntitiesCacheService {
     rpc getEntityByKey(EntityKey) returns (Cache) {}
     rpc getEntitiesBySearchParamsKey(EntitiesSearchParamsKey) returns (Cache) {}
     rpc setEntityByKey(SetEntityByKey) returns (Void) {}
-    rpc setEntitiesBySearchParamsKey(SetEntitiesBySearchParamsKey) returns (Void) {}
+    rpc setEntitiesBySearchParamsKey(stream SetEntitiesBySearchParamsKey) returns (Void) {}
     rpc delEntityByKey(EntityKey) returns (Void) {}
 }
 
