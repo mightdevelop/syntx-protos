@@ -32,7 +32,7 @@ message SetEntitiesBySearchParamsKey {
 
 service EntitiesCacheService {
     rpc getEntityByKey(EntityKey) returns (Cache) {}
-    rpc getEntitiesBySearchParamsKey(EntitiesSearchParamsKey) returns (Cache) {}
+    rpc getEntitiesBySearchParamsKey(EntitiesSearchParamsKey) returns (stream Cache) {}
     rpc setEntityByKey(SetEntityByKey) returns (Void) {}
     rpc setEntitiesBySearchParamsKey(stream SetEntitiesBySearchParamsKey) returns (stream Void) {}
     rpc delEntityByKey(EntityKey) returns (Void) {}
