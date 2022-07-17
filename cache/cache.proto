@@ -13,28 +13,15 @@ message EntityKey {
     string entityId = 2;
 }
 
-message EntitiesSearchParamsKey {
-    string entityName = 1;
-    string jsonSearchParams = 2;
-}
-
 message SetEntityByKey {
     EntityKey entityKey = 1;
     string jsonData = 2;
     optional int32 ttl = 3;
 }
 
-message SetEntitiesBySearchParamsKey {
-    EntitiesSearchParamsKey searchParamsKey = 1;
-    string jsonData = 2;
-    optional int32 ttl = 3;
-}
-
 service EntitiesCacheService {
     rpc getEntityByKey(EntityKey) returns (Cache) {}
-    rpc getEntitiesBySearchParamsKey(EntitiesSearchParamsKey) returns (stream Cache) {}
     rpc setEntityByKey(SetEntityByKey) returns (Void) {}
-    rpc setEntitiesBySearchParamsKey(stream SetEntitiesBySearchParamsKey) returns (stream Void) {}
     rpc delEntityByKey(EntityKey) returns (Void) {}
 }
 
