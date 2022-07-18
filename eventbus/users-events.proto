@@ -6,10 +6,10 @@ message Void {}
 
 message User {
     string id = 1;
-    string email = 2;
-    string username = 3;
-    string password = 4;
-    string salt = 5;
+    optional string email = 2;
+    optional string username = 3;
+    optional string password = 4;
+    optional string salt = 5;
 }
 
 message SearchUsersParams {
