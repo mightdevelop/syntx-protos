@@ -25,7 +25,7 @@ message SearchUsersEvent {
     repeated User users = 2;
 }
 
-service UsersService {
+service UsersEventsService {
     rpc getUserByIdEvent(User) returns (Void) {}
     rpc searchUsersEvent(SearchUsersEvent) returns (Void) {}
     rpc createUserEvent(User) returns (Void) {}
