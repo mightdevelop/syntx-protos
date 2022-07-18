@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package eventbus;
+
+message Void {}
+
+message User {
+    string id = 1;
+    string email = 2;
+    string username = 3;
+    string password = 4;
+    string salt = 5;
+}
+
+message SearchUsersParams {
+    optional string email = 1;
+    optional string username = 2;
+    repeated string usersIds = 3;
+    optional int32 limit = 4;
+    optional int32 offset = 5;
+}
+
+message SearchUsersEvent {
+    SearchUsersParams searchParams = 1;
+    repeated User users = 2;
+}
+
+service UsersService {
+    rpc getUserByIdEvent(User) returns (Void) {}
+    rpc searchUsersEvent(SearchUsersEvent) returns (Void) {}
+    rpc createUserEvent(User) returns (Void) {}
+    rpc updateUserEvent(User) returns (Void) {}
+    rpc deleteUserEvent(User) returns (Void) {}
+}
