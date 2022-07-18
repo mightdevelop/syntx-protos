@@ -5,7 +5,7 @@ package eventbus;
 message Void {}
 
 message User {
-    string id = 1;
+    optional string id = 1;
     optional string email = 2;
     optional string username = 3;
     optional string password = 4;
