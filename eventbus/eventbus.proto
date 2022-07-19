@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package eventbus;
+
+import "user-event.proto";
+
+message Void {}
+
+message Event {
+    oneof event {
+        UserEvent userEvent = 1;
+    }
+}
+
+message EventId {
+    string eventId = 1;
+}
+
+message SearchEventsParams {
+    optional string email = 1;
+    optional string username = 2;
+    repeated string eventsIds = 3;
+    optional int32 limit = 4;
+    optional int32 offset = 5;
+}
+
+service EventBusService {
+    rpc getEventById(EventId) returns (Event) {}
+    rpc searchEvents(SearchEventsParams) returns (stream Event) {}
+}

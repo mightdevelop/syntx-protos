@@ -2,15 +2,9 @@ syntax = "proto3";
 
 package eventbus;
 
-message Void {}
+import "user-event.proto";
 
-message User {
-    string id = 1;
-    optional string email = 2;
-    optional string username = 3;
-    optional string password = 4;
-    optional string salt = 5;
-}
+message Void {}
 
 message SearchUsersParams {
     optional string email = 1;
@@ -24,11 +18,6 @@ message SearchUsersEvent {
     bool success = 1;
     SearchUsersParams searchParams = 2;
     repeated User users = 3;
-}
-
-message UserEvent {
-    bool success = 1;
-    User user = 2;
 }
 
 service UsersEventsService {
