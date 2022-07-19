@@ -3,8 +3,7 @@ syntax = "proto3";
 package eventbus;
 
 import "user-event.proto";
-
-message Void {}
+import "google/protobuf/empty.proto";
 
 message SearchUsersParams {
     optional string email = 1;
@@ -21,9 +20,9 @@ message SearchUsersEvent {
 }
 
 service UsersEventsService {
-    rpc getUserByIdEvent(UserEvent) returns (Void) {}
-    rpc searchUsersEvent(SearchUsersEvent) returns (Void) {}
-    rpc createUserEvent(UserEvent) returns (Void) {}
-    rpc updateUserEvent(UserEvent) returns (Void) {}
-    rpc deleteUserEvent(UserEvent) returns (Void) {}
+    rpc getUserByIdEvent(UserEvent) returns (google.protobuf.Empty) {}
+    rpc searchUsersEvent(SearchUsersEvent) returns (google.protobuf.Empty) {}
+    rpc createUserEvent(UserEvent) returns (google.protobuf.Empty) {}
+    rpc updateUserEvent(UserEvent) returns (google.protobuf.Empty) {}
+    rpc deleteUserEvent(UserEvent) returns (google.protobuf.Empty) {}
 }

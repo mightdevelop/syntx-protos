@@ -4,8 +4,6 @@ package eventbus;
 
 import "user-event.proto";
 
-message Void {}
-
 message Event {
     oneof event {
         UserEvent userEvent = 1;
