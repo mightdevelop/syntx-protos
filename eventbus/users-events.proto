@@ -5,7 +5,7 @@ package eventbus;
 message Void {}
 
 message User {
-    optional string id = 1;
+    string id = 1;
     optional string email = 2;
     optional string username = 3;
     optional string password = 4;
@@ -21,14 +21,20 @@ message SearchUsersParams {
 }
 
 message SearchUsersEvent {
-    SearchUsersParams searchParams = 1;
-    repeated User users = 2;
+    bool success = 1;
+    SearchUsersParams searchParams = 2;
+    repeated User users = 3;
+}
+
+message UserEvent {
+    bool success = 1;
+    User user = 2;
 }
 
 service UsersEventsService {
-    rpc getUserByIdEvent(User) returns (Void) {}
+    rpc getUserByIdEvent(UserEvent) returns (Void) {}
     rpc searchUsersEvent(SearchUsersEvent) returns (Void) {}
-    rpc createUserEvent(User) returns (Void) {}
-    rpc updateUserEvent(User) returns (Void) {}
-    rpc deleteUserEvent(User) returns (Void) {}
+    rpc createUserEvent(UserEvent) returns (Void) {}
+    rpc updateUserEvent(UserEvent) returns (Void) {}
+    rpc deleteUserEvent(UserEvent) returns (Void) {}
 }
