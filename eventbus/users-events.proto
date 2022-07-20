@@ -4,19 +4,35 @@ package eventbus;
 
 import "google/protobuf/empty.proto";
 
+message Error {
+    int32 code = 1;
+    string message = 2;
+}
+
 message User {
     string id = 1;
-    optional string email = 2;
-    optional string username = 3;
-    optional string password = 4;
-    optional string salt = 5;
+    string email = 2;
+    string username = 3;
+    string password = 4;
+    string salt = 5;
+}
+
+message ErrorAndUserId {
+    Error error = 1;
+    string userId = 2;
 }
 
 message UserEvent {
-    optional Error error = 1;
-    oneof data {
-        User user = 2;
-        string userId = 3;
+    oneof event {
+        User user = 1;
+        ErrorAndUserId errorAndUserId = 2;
+    }
+}
+
+message CreateUserEvent {
+    oneof event {
+        User user = 1;
+        Error error = 2;
     }
 }
 
@@ -28,11 +44,6 @@ message SearchUsersParams {
     optional int32 offset = 5;
 }
 
-message Error {
-    int32 code = 1;
-    string message = 2;
-}
-
 message SearchUsersEvent {
     optional Error error = 1;
     SearchUsersParams searchParams = 2;
@@ -42,7 +53,7 @@ message SearchUsersEvent {
 service UsersEventsService {
     rpc getUserByIdEvent(UserEvent) returns (google.protobuf.Empty) {}
     rpc searchUsersEvent(SearchUsersEvent) returns (google.protobuf.Empty) {}
-    rpc createUserEvent(UserEvent) returns (google.protobuf.Empty) {}
+    rpc createUserEvent(CreateUserEvent) returns (google.protobuf.Empty) {}
     rpc updateUserEvent(UserEvent) returns (google.protobuf.Empty) {}
     rpc deleteUserEvent(UserEvent) returns (google.protobuf.Empty) {}
 }
