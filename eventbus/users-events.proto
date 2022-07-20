@@ -17,16 +17,9 @@ message User {
     string salt = 5;
 }
 
-message ErrorAndUserId {
-    Error error = 1;
-    string userId = 2;
-}
-
 message UserEvent {
-    oneof event {
-        User user = 1;
-        ErrorAndUserId errorAndUserId = 2;
-    }
+    optional Error error = 1;
+    User user = 2;
 }
 
 message CreateUserEvent {
