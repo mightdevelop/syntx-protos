@@ -22,13 +22,6 @@ message UserEvent {
     User user = 2;
 }
 
-message CreateUserEvent {
-    oneof event {
-        User user = 1;
-        Error error = 2;
-    }
-}
-
 message SearchUsersParams {
     optional string email = 1;
     optional string username = 2;
@@ -46,7 +39,7 @@ message SearchUsersEvent {
 service UsersEventsService {
     rpc getUserByIdEvent(UserEvent) returns (google.protobuf.Empty) {}
     rpc searchUsersEvent(SearchUsersEvent) returns (google.protobuf.Empty) {}
-    rpc createUserEvent(CreateUserEvent) returns (google.protobuf.Empty) {}
+    rpc createUserEvent(UserEvent) returns (google.protobuf.Empty) {}
     rpc updateUserEvent(UserEvent) returns (google.protobuf.Empty) {}
     rpc deleteUserEvent(UserEvent) returns (google.protobuf.Empty) {}
 }
