@@ -2,11 +2,12 @@ syntax = "proto3";
 
 package eventbus;
 
-import "user-event.proto";
+import "users-events.proto";
 
 message Event {
     oneof event {
         UserEvent userEvent = 1;
+        SearchUsersEvent searchUsersEvent = 2;
     }
 }
 

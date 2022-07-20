@@ -2,8 +2,23 @@ syntax = "proto3";
 
 package eventbus;
 
-import "user-event.proto";
 import "google/protobuf/empty.proto";
+
+message User {
+    string id = 1;
+    optional string email = 2;
+    optional string username = 3;
+    optional string password = 4;
+    optional string salt = 5;
+}
+
+message UserEvent {
+    bool success = 1;
+    oneof data {
+        User user = 2;
+        string userId = 3;
+    }
+}
 
 message SearchUsersParams {
     optional string email = 1;
