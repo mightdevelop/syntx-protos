@@ -28,8 +28,13 @@ message SearchUsersParams {
     optional int32 offset = 5;
 }
 
+message Error {
+    int32 code = 1;
+    string message = 2;
+}
+
 message SearchUsersEvent {
-    optional string error = 1;
+    optional Error error = 1;
     SearchUsersParams searchParams = 2;
     repeated User users = 3;
 }
