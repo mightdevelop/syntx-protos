@@ -20,10 +20,11 @@ message ProjectId {
 
 message SearchProjectsParams {
     optional string leadId = 1;
-    repeated string usersIds = 2;
-    repeated string projectsIds = 3;
-    optional int32 limit = 4;
-    optional int32 offset = 5;
+    optional string projectName = 2;
+    repeated string usersIds = 3;
+    repeated string projectsIds = 4;
+    optional int32 limit = 5;
+    optional int32 offset = 6;
 }
 
 message UserId {
