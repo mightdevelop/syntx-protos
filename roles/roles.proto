@@ -86,7 +86,7 @@ message SearchPermissionsParams {
         UserIdAndProjectId userIdAndProjectId = 1;
         string roleId = 2;
     }
-    repeated string permissionsIds = 3;
+    repeated int32 permissionsIds = 3;
     optional int32 limit = 4;
 }
 
