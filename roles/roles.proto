@@ -44,7 +44,6 @@ message SearchRolesParams {
     optional string name = 3;
     repeated string rolesIds = 4;
     optional int32 limit = 5;
-    optional int32 offset = 6;
 }
 
 service RolesService {
@@ -89,7 +88,6 @@ message SearchPermissionsParams {
     }
     repeated string permissionsIds = 3;
     optional int32 limit = 4;
-    optional int32 offset = 5;
 }
 
 service PermissionsService {
