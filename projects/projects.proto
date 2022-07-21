@@ -18,16 +18,20 @@ message Project {
     string leadId = 3;
 }
 
-message ProjectByIdRequest {
+message ProjectId {
     string projectId = 1;
 }
 
-message ProjectsByUserIdRequest {
-    string userId = 1;
+message SearchProjectsParams {
+    optional string leadId = 1;
+    repeated string usersIds = 2;
+    repeated string projectsIds = 3;
+    optional int32 limit = 4;
+    optional int32 offset = 5;
 }
 
-message ProjectsByLeadIdRequest {
-    string leadId = 1;
+message UserId {
+    string userId = 1;
 }
 
 message CreateProjectRequest {
@@ -40,25 +44,18 @@ message UpdateProjectRequest {
     optional string leadId = 2;
     optional string name = 3;   
 }
-
-message DeleteProjectRequest {
-    string projectId = 1;
-}
-
 message ProjectIdAndUserId {
     string projectId = 1;
     string userId = 2;
 }
 
 service ProjectsService {
-    rpc getProjectById(ProjectByIdRequest) returns (Project) {}
-    rpc getProjectsByUserId(ProjectsByUserIdRequest) returns (stream Project) {}
-    rpc getProjectsByLeadId(ProjectsByLeadIdRequest) returns (stream Project) {}
-    rpc getMutualProjectsByUsersIds(UsersIds) returns (stream Project) {}
+    rpc getProjectById(ProjectId) returns (Project) {}
+    rpc searchProjects(SearchProjectsParams) returns (stream Project) {}
     rpc isUserProjectParticipant(ProjectIdAndUserId) returns (Bool) {}
     rpc createProject(CreateProjectRequest) returns (Project) {}
     rpc updateProject(UpdateProjectRequest) returns (Project) {}
-    rpc deleteProject(DeleteProjectRequest) returns (Project) {}
+    rpc deleteProject(ProjectId) returns (Project) {}
     rpc addUserToProject(ProjectIdAndUserId) returns (Void) {}
     rpc removeUserFromProject(ProjectIdAndUserId) returns (Void) {}
 }
@@ -69,37 +66,22 @@ message Invite {
     string projectId = 3;
 }
 
-message InviteByIdRequest {
+message InviteId {
     string inviteId = 1;
 }
 
-message InvitesByUserIdRequest {
-    string userId = 1;
-}
-
-message InvitesByProjectIdRequest {
-    string projectId = 1;
-}
-
-message CreateInviteRequest {
-    string projectId = 1;
-    string userId = 2;
-}
-
-message DeleteInviteByIdRequest {
-    string inviteId = 1;
-}
-
-message DeleteInviteByUserIdAndProjectIdRequest {
-    string projectId = 1;
-    string userId = 2;
+message SearchInvitesParams {
+    optional string userId = 1;
+    optional string projectId = 2;
+    repeated string invitesIds = 3;
+    optional int32 limit = 4;
+    optional int32 offset = 5;
 }
 
 service InvitesService {
-    rpc getInviteById(InviteByIdRequest) returns (Invite) {}
-    rpc getInvitesByUserId(InvitesByUserIdRequest) returns (stream Invite) {}
-    rpc getInvitesByProjectId(InvitesByProjectIdRequest) returns (stream Invite) {}
-    rpc createInvite(CreateInviteRequest) returns (Invite) {}
-    rpc deleteInviteById(DeleteInviteByIdRequest) returns (Invite) {}
-    rpc deleteInviteByUserIdAndProjectId(DeleteInviteByUserIdAndProjectIdRequest) returns (Invite) {}
+    rpc getInviteById(InviteId) returns (Invite) {}
+    rpc searchInvites(SearchProjectsParams) returns (stream Invite) {}
+    rpc createInvite(ProjectIdAndUserId) returns (Invite) {}
+    rpc deleteInviteById(InviteId) returns (Invite) {}
+    rpc deleteInviteByUserIdAndProjectId(ProjectIdAndUserId) returns (Invite) {}
 }
