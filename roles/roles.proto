@@ -41,16 +41,15 @@ message RoleIdAndUserId {
 message SearchRolesParams {
     optional string userId = 1;
     optional string projectId = 2;
-    repeated string rolesIds = 3;
-    optional int32 limit = 4;
-    optional int32 offset = 5;
+    optional string name = 3;
+    repeated string rolesIds = 4;
+    optional int32 limit = 5;
+    optional int32 offset = 6;
 }
 
 service RolesService {
     rpc getRoleById(RoleId) returns (Role) {}
     rpc searchRoles(SearchRolesParams) returns (Role) {}
-    // rpc getRolesByUserIdAndProjectId(UserIdAndProjectId) returns (stream Role) {}
-    // rpc getRolesByProjectId(ProjectId) returns (stream Role) {}
     rpc getUsersIdsByRoleId(RoleId) returns (stream UserId) {}
     rpc createRole(CreateRoleRequest) returns (Role) {}
     rpc updateRole(RoleIdAndName) returns (Role) {}
