@@ -8,10 +8,6 @@ message Bool {
     bool bool = 1;
 }
 
-message UsersIds {
-    repeated string usersIds = 1;
-}
-
 message Project {
     string id = 1;
     string name = 2;
