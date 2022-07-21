@@ -9,9 +9,6 @@ message Role {
     string projectId = 2;
     string name = 3;
 }
-message RoleByNameRequest {
-    string roleName = 1;
-}
 
 message CreateRoleRequest {
     string projectId = 1;
@@ -36,20 +33,24 @@ message UserIdAndProjectId {
     string projectId = 2;
 }
 
-message ProjectId {
-    string projectId = 1;
-}
-
 message RoleIdAndUserId {
     string roleId = 1;
     string userId = 2;
 }
 
+message SearchRolesParams {
+    optional string userId = 1;
+    optional string projectId = 2;
+    repeated string rolesIds = 3;
+    optional int32 limit = 4;
+    optional int32 offset = 5;
+}
+
 service RolesService {
     rpc getRoleById(RoleId) returns (Role) {}
-    rpc getRoleByName(RoleByNameRequest) returns (Role) {}
-    rpc getRolesByUserIdAndProjectId(UserIdAndProjectId) returns (stream Role) {}
-    rpc getRolesByProjectId(ProjectId) returns (stream Role) {}
+    rpc searchRoles(SearchRolesParams) returns (Role) {}
+    // rpc getRolesByUserIdAndProjectId(UserIdAndProjectId) returns (stream Role) {}
+    // rpc getRolesByProjectId(ProjectId) returns (stream Role) {}
     rpc getUsersIdsByRoleId(RoleId) returns (stream UserId) {}
     rpc createRole(CreateRoleRequest) returns (Role) {}
     rpc updateRole(RoleIdAndName) returns (Role) {}
@@ -67,21 +68,10 @@ message PermissionId {
     int32 permissionId = 1;
 }
 
-message PermissionIdAndUserIdAndProjectId {
-    int32 permissionId = 1;
-    string userId = 2;
-    string projectId = 3;
-}
-
 message PermissionsIdsAndUserIdAndProjectId {
     repeated int32 permissionsIds = 1;
     string userId = 2;
     string projectId = 3;
-}
-
-message PermissionIdAndRoleId {
-    int32 permissionId = 1;
-    string roleId = 2;
 }
 
 message PermissionsIdsAndRoleId {
@@ -93,12 +83,19 @@ message Bool {
     bool bool = 1;
 }
 
+message SearchPermissionsParams {
+    oneof params {
+        UserIdAndProjectId userIdAndProjectId = 1;
+        string roleId = 2;
+    }
+    repeated string permissionsIds = 3;
+    optional int32 limit = 4;
+    optional int32 offset = 5;
+}
+
 service PermissionsService {
     rpc getPermissionById(PermissionId) returns (Permission) {}
-    rpc getPermissionsByUserIdAndProjectId(UserIdAndProjectId) returns (stream Permission) {}
-    rpc getPermissionsByRoleId(RoleId) returns (stream Permission) {}
-    rpc doesUserHavePermission(PermissionIdAndUserIdAndProjectId) returns (Bool) {}
-    rpc doesRoleHavePermission(PermissionIdAndRoleId) returns (Bool) {}
+    rpc searchPermissions(SearchPermissionsParams) returns (stream Permission) {}
     rpc addPermissionsToUserInProject(PermissionsIdsAndUserIdAndProjectId) returns (Void) {}
     rpc addPermissionsToRole(PermissionsIdsAndRoleId) returns (Void) {}
     rpc removePermissionsFromUserInProject(PermissionsIdsAndUserIdAndProjectId) returns (Void) {}
