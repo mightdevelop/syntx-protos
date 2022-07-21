@@ -77,7 +77,7 @@ message SearchInvitesParams {
 
 service InvitesService {
     rpc getInviteById(InviteId) returns (Invite) {}
-    rpc searchInvites(SearchProjectsParams) returns (stream Invite) {}
+    rpc searchInvites(SearchInvitesParams) returns (stream Invite) {}
     rpc createInvite(ProjectIdAndUserId) returns (Invite) {}
     rpc deleteInviteById(InviteId) returns (Invite) {}
     rpc deleteInviteByUserIdAndProjectId(ProjectIdAndUserId) returns (Invite) {}
