@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+package eventbus;
+
+import "google/protobuf/empty.proto";
+
+message Error {
+    int32 code = 1;
+    string message = 2;
+}
+
+message Role {
+    optional string id = 1;
+    optional string projectId = 2;
+    optional string name = 3;
+}
+
+message RoleIdAndUserId {
+    string roleId = 1;
+    string userId = 2;
+}
+
+message RoleEvent {
+    optional Error error = 1;
+    Role user = 2;
+}
+
+message SearchRolesParams {
+    optional string userId = 1;
+    optional string projectId = 2;
+    optional string name = 3;
+    repeated string rolesIds = 4;
+    optional int32 limit = 5;
+}
+
+message SearchRolesEvent {
+    optional Error error = 1;
+    SearchRolesParams searchParams = 2;
+    repeated Role roles = 3;
+}
+
+service RolesEventsService {
+    rpc getRoleByIdEvent(RoleEvent) returns (google.protobuf.Empty) {}
+    rpc searchRolesEvent(SearchRolesEvent) returns (google.protobuf.Empty) {}
+    rpc createRoleEvent(RoleEvent) returns (google.protobuf.Empty) {}
+    rpc updateRoleEvent(RoleEvent) returns (google.protobuf.Empty) {}
+    rpc deleteRoleEvent(RoleEvent) returns (google.protobuf.Empty) {}
+    rpc addRoleToUserEvent(RoleIdAndUserId) returns (google.protobuf.Empty) {}
+    rpc removeRoleFromUserEvent(RoleIdAndUserId) returns (google.protobuf.Empty) {}
+}
