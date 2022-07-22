@@ -3,11 +3,7 @@ syntax = "proto3";
 package eventbus;
 
 import "google/protobuf/empty.proto";
-
-message Error {
-    int32 code = 1;
-    string message = 2;
-}
+import "common.proto";
 
 message User {
     optional string id = 1;
