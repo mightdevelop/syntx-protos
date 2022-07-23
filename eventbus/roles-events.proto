@@ -12,8 +12,9 @@ message Role {
 }
 
 message RoleIdAndUserId {
-    string roleId = 1;
-    string userId = 2;
+    optional Error error = 1;
+    string roleId = 2;
+    string userId = 3;
 }
 
 message RoleEvent {
