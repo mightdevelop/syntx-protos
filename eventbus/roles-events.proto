@@ -18,7 +18,7 @@ message RoleIdAndUserId {
 
 message RoleEvent {
     optional Error error = 1;
-    Role user = 2;
+    Role role = 2;
 }
 
 message SearchRolesParams {
