@@ -52,14 +52,16 @@ message Permission {
 }
 
 message PermissionsIdsAndUserIdAndProjectId {
-    repeated int32 permissionsIds = 1;
-    string userId = 2;
-    string projectId = 3;
+    optional Error error = 1;
+    repeated int32 permissionsIds = 2;
+    string userId = 3;
+    string projectId = 4;
 }
 
 message PermissionsIdsAndRoleId {
-    repeated int32 permissionsIds = 1;
-    string roleId = 2;
+    optional Error error = 1;
+    repeated int32 permissionsIds = 2;
+    string roleId = 3;
 }
 
 message Bool {
@@ -80,11 +82,11 @@ message SearchPermissionsParams {
     optional int32 limit = 4;
 }
 
-service PermissionsService {
-    rpc getPermissionById(Permission) returns (Permission) {}
-    rpc searchPermissions(SearchPermissionsParams) returns (stream Permission) {}
-    rpc addPermissionsToUserInProject(PermissionsIdsAndUserIdAndProjectId) returns (google.protobuf.Empty) {}
-    rpc addPermissionsToRole(PermissionsIdsAndRoleId) returns (google.protobuf.Empty) {}
-    rpc removePermissionsFromUserInProject(PermissionsIdsAndUserIdAndProjectId) returns (google.protobuf.Empty) {}
-    rpc removePermissionsFromRole(PermissionsIdsAndRoleId) returns (google.protobuf.Empty) {}
+service PermissionsEventsService {
+    rpc onGetPermissionByIdEvent(Permission) returns (Permission) {}
+    rpc onSearchPermissionsEvent(SearchPermissionsParams) returns (stream Permission) {}
+    rpc onAddPermissionsToUserInProjectEvent(PermissionsIdsAndUserIdAndProjectId) returns (google.protobuf.Empty) {}
+    rpc onAddPermissionsToRoleEvent(PermissionsIdsAndRoleId) returns (google.protobuf.Empty) {}
+    rpc onRemovePermissionsFromUserInProjectEvent(PermissionsIdsAndUserIdAndProjectId) returns (google.protobuf.Empty) {}
+    rpc onRemovePermissionsFromRoleEvent(PermissionsIdsAndRoleId) returns (google.protobuf.Empty) {}
 }
