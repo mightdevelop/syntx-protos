@@ -45,7 +45,7 @@ message RemovePermissionsFromRoleRequest {
 
 message RemoveRolesFromUserRequest {
     string userId = 1;
-    repeated int32 rolesIds = 2;
+    repeated string rolesIds = 2;
 }
 
 message Bool {
