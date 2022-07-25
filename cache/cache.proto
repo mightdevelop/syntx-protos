@@ -52,9 +52,14 @@ message Bool {
     optional bool bool = 1;
 }
 
+message RoleId {
+    string roleId = 1;
+}
+
 service PermissionsCacheService {
     rpc doesUserHavePermission(DoesUserHavePermissionRequest) returns (Bool) {}
     rpc addPermissionToUserInProject(AddPermissionsToUserRequest) returns (Void) {}
     rpc removePermissionsFromRole(RemovePermissionsFromRoleRequest) returns (Void) {}
     rpc removeRolesFromUser(RemoveRolesFromUserRequest) returns (Void) {}
+    rpc deleteRole(RoleId) returns (Void) {}
 }
