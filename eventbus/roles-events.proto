@@ -90,7 +90,7 @@ message SearchPermissionsParams {
 message SearchPermissionsEvent {
     optional Error error = 1;
     SearchPermissionsParams searchParams = 2;
-    repeated Role permissions = 3;
+    repeated Permission permissions = 3;
 }
 
 service PermissionsEventsService {
