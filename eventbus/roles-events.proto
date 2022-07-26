@@ -79,7 +79,6 @@ message UserIdAndProjectId {
 }
 
 message SearchPermissionsParams {
-    optional Error error = 1;
     oneof params {
         UserIdAndProjectId userIdAndProjectId = 2;
         string roleId = 3;
@@ -88,9 +87,15 @@ message SearchPermissionsParams {
     optional int32 limit = 5;
 }
 
+message SearchPermissionsEvent {
+    optional Error error = 1;
+    SearchPermissionsParams searchParams = 2;
+    repeated Role permissions = 3;
+}
+
 service PermissionsEventsService {
     rpc getPermissionByIdEvent(PermissionEvent) returns (Permission) {}
-    rpc searchPermissionsEvent(SearchPermissionsParams) returns (stream Permission) {}
+    rpc searchPermissionsEvent(SearchPermissionsEvent) returns (stream Permission) {}
     rpc addPermissionsToUserInProjectEvent(PermissionsIdsAndUserIdAndProjectId) returns (google.protobuf.Empty) {}
     rpc addPermissionsToRoleEvent(PermissionsIdsAndRoleId) returns (google.protobuf.Empty) {}
     rpc removePermissionsFromUserInProjectEvent(PermissionsIdsAndUserIdAndProjectId) returns (google.protobuf.Empty) {}
