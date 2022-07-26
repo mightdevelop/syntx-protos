@@ -83,10 +83,10 @@ message SearchPermissionsParams {
 }
 
 service PermissionsEventsService {
-    rpc onGetPermissionByIdEvent(Permission) returns (Permission) {}
-    rpc onSearchPermissionsEvent(SearchPermissionsParams) returns (stream Permission) {}
-    rpc onAddPermissionsToUserInProjectEvent(PermissionsIdsAndUserIdAndProjectId) returns (google.protobuf.Empty) {}
-    rpc onAddPermissionsToRoleEvent(PermissionsIdsAndRoleId) returns (google.protobuf.Empty) {}
-    rpc onRemovePermissionsFromUserInProjectEvent(PermissionsIdsAndUserIdAndProjectId) returns (google.protobuf.Empty) {}
-    rpc onRemovePermissionsFromRoleEvent(PermissionsIdsAndRoleId) returns (google.protobuf.Empty) {}
+    rpc getPermissionByIdEvent(Permission) returns (Permission) {}
+    rpc searchPermissionsEvent(SearchPermissionsParams) returns (stream Permission) {}
+    rpc addPermissionsToUserInProjectEvent(PermissionsIdsAndUserIdAndProjectId) returns (google.protobuf.Empty) {}
+    rpc addPermissionsToRoleEvent(PermissionsIdsAndRoleId) returns (google.protobuf.Empty) {}
+    rpc removePermissionsFromUserInProjectEvent(PermissionsIdsAndUserIdAndProjectId) returns (google.protobuf.Empty) {}
+    rpc removePermissionsFromRoleEvent(PermissionsIdsAndRoleId) returns (google.protobuf.Empty) {}
 }
