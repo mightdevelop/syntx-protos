@@ -83,8 +83,12 @@ message SearchPermissionsParams {
     optional int32 limit = 5;
 }
 
+message PermissionId {
+    int32 permissionId = 1;
+}
+
 service PermissionsEventsService {
-    rpc getPermissionByIdEvent(Permission) returns (Permission) {}
+    rpc getPermissionByIdEvent(PermissionId) returns (Permission) {}
     rpc searchPermissionsEvent(SearchPermissionsParams) returns (stream Permission) {}
     rpc addPermissionsToUserInProjectEvent(PermissionsIdsAndUserIdAndProjectId) returns (google.protobuf.Empty) {}
     rpc addPermissionsToRoleEvent(PermissionsIdsAndRoleId) returns (google.protobuf.Empty) {}
