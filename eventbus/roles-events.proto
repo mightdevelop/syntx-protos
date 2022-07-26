@@ -51,6 +51,11 @@ message Permission {
     optional string name = 2;
 }
 
+message PermissionEvent {
+    optional Error error = 1;
+    Permission permission = 2;
+}
+
 message PermissionsIdsAndUserIdAndProjectId {
     optional Error error = 1;
     repeated int32 permissionsIds = 2;
@@ -83,12 +88,8 @@ message SearchPermissionsParams {
     optional int32 limit = 5;
 }
 
-message PermissionId {
-    int32 permissionId = 1;
-}
-
 service PermissionsEventsService {
-    rpc getPermissionByIdEvent(PermissionId) returns (Permission) {}
+    rpc getPermissionByIdEvent(PermissionEvent) returns (Permission) {}
     rpc searchPermissionsEvent(SearchPermissionsParams) returns (stream Permission) {}
     rpc addPermissionsToUserInProjectEvent(PermissionsIdsAndUserIdAndProjectId) returns (google.protobuf.Empty) {}
     rpc addPermissionsToRoleEvent(PermissionsIdsAndRoleId) returns (google.protobuf.Empty) {}
