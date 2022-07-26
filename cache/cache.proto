@@ -64,7 +64,7 @@ message RoleId {
 service PermissionsCacheService {
     rpc doesUserHavePermission(DoesUserHavePermissionRequest) returns (Bool) {}
     rpc addPermissionToUserInProject(AddPermissionsToUserRequest) returns (Void) {}
-    rpc removePermissionsFromUser(RemovePermissionsFromRoleRequest) returns (Void) {}
+    rpc removePermissionsFromUser(RemovePermissionsFromUserRequest) returns (Void) {}
     rpc removePermissionsFromRole(RemovePermissionsFromRoleRequest) returns (Void) {}
     rpc removeRolesFromUser(RemoveRolesFromUserRequest) returns (Void) {}
     rpc deleteRole(RoleId) returns (Void) {}
