@@ -74,12 +74,13 @@ message UserIdAndProjectId {
 }
 
 message SearchPermissionsParams {
+    optional Error error = 1;
     oneof params {
-        UserIdAndProjectId userIdAndProjectId = 1;
-        string roleId = 2;
+        UserIdAndProjectId userIdAndProjectId = 2;
+        string roleId = 3;
     }
-    repeated int32 permissionsIds = 3;
-    optional int32 limit = 4;
+    repeated int32 permissionsIds = 4;
+    optional int32 limit = 5;
 }
 
 service PermissionsEventsService {
