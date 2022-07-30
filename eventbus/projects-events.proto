@@ -1,0 +1,56 @@
+syntax = "proto3";
+
+package eventbus;
+
+import "google/protobuf/empty.proto";
+import "common.proto";
+
+message Project {
+    optional string id = 1;
+    optional string email = 2;
+    optional string name = 3;
+    optional string password = 4;
+    optional string salt = 5;
+}
+
+message ProjectEvent {
+    optional Error error = 1;
+    Project project = 2;
+}
+
+message AddOrRemoveUserFromProjectEvent {
+    optional Error error = 1;
+    string projectId = 2;
+    string userId = 3;
+}
+
+message IsUserProjectParticipantEvent {
+    optional Error error = 1;
+    string projectId = 2;
+    string userId = 3;
+    bool bool = 4;
+}
+
+message SearchProjectsParams {
+    optional string boardId = 1;
+    repeated string projectsIds = 2;
+    optional int32 limit = 3;
+    optional int32 offset = 4;
+}
+
+message SearchProjectsEvent {
+    optional Error error = 1;
+    SearchProjectsParams searchParams = 2;
+    repeated Project projects = 3;
+}
+
+service ProjectsEventsService {
+    rpc getProjectByIdEvent(ProjectEvent) returns (google.protobuf.Empty) {}
+    rpc searchProjectsEvent(SearchProjectsEvent) returns (google.protobuf.Empty) {}
+    rpc isUserProjectParticipant(IsUserProjectParticipantEvent) returns (google.protobuf.Empty) {}
+    rpc createProjectEvent(ProjectEvent) returns (google.protobuf.Empty) {}
+    rpc updateProjectEvent(ProjectEvent) returns (google.protobuf.Empty) {}
+    rpc deleteProjectEvent(ProjectEvent) returns (google.protobuf.Empty) {}
+    rpc addUserToProject(AddOrRemoveUserFromProjectEvent) returns (google.protobuf.Empty) {}
+    rpc removeUserFromProject(AddOrRemoveUserFromProjectEvent) returns (google.protobuf.Empty) {}
+}
