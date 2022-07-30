@@ -47,7 +47,7 @@ message SearchProjectsEvent {
 service ProjectsEventsService {
     rpc getProjectByIdEvent(ProjectEvent) returns (google.protobuf.Empty) {}
     rpc searchProjectsEvent(SearchProjectsEvent) returns (google.protobuf.Empty) {}
-    rpc isUserProjectParticipant(IsUserProjectParticipantEvent) returns (google.protobuf.Empty) {}
+    rpc isUserProjectParticipantEvent(IsUserProjectParticipantEvent) returns (google.protobuf.Empty) {}
     rpc createProjectEvent(ProjectEvent) returns (google.protobuf.Empty) {}
     rpc updateProjectEvent(ProjectEvent) returns (google.protobuf.Empty) {}
     rpc deleteProjectEvent(ProjectEvent) returns (google.protobuf.Empty) {}
