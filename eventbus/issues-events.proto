@@ -16,13 +16,9 @@ message BoardEvent {
     Board board = 2;
 }
 
-message ProjectId {
-    string projectId = 1;
-}
-
 service BoardsEventsService {
     rpc getBoardByIdEvent(BoardEvent) returns (google.protobuf.Empty) {}
-    rpc getBoardByProjectIdEvent(ProjectId) returns (google.protobuf.Empty) {}
+    rpc getBoardByProjectIdEvent(BoardEvent) returns (google.protobuf.Empty) {}
     rpc createBoardEvent(BoardEvent) returns (google.protobuf.Empty) {} 
     rpc deleteBoardEvent(BoardEvent) returns (google.protobuf.Empty) {}
 }
