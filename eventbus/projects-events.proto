@@ -66,12 +66,6 @@ message InviteEvent {
     Invite invite = 2;
 }
 
-message ProjectIdAndUserIdEvent {
-    optional Error error = 1;
-    string userId = 2;
-    string projectId = 3;
-}
-
 message SearchInvitesParams {
     optional string userId = 1;
     optional string projectId = 2;
@@ -91,5 +85,4 @@ service InvitesEventsService {
     rpc searchInvitesEvent(SearchInvitesParams) returns (google.protobuf.Empty) {}
     rpc createInviteEvent(InviteEvent) returns (google.protobuf.Empty) {}
     rpc deleteInviteByIdEvent(InviteEvent) returns (google.protobuf.Empty) {}
-    rpc deleteInviteByUserIdAndProjectIdEvent(ProjectIdAndUserIdEvent) returns (google.protobuf.Empty) {}
 }
