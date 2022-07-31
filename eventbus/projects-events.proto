@@ -82,7 +82,7 @@ message SearchInvitesEvent {
 
 service InvitesEventsService {
     rpc getInviteByIdEvent(InviteEvent) returns (google.protobuf.Empty) {}
-    rpc searchInvitesEvent(SearchInvitesParams) returns (google.protobuf.Empty) {}
+    rpc searchInvitesEvent(SearchInvitesEvent) returns (google.protobuf.Empty) {}
     rpc createInviteEvent(InviteEvent) returns (google.protobuf.Empty) {}
     rpc deleteInviteByIdEvent(InviteEvent) returns (google.protobuf.Empty) {}
 }
