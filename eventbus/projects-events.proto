@@ -87,9 +87,9 @@ message SearchInvitesEvent {
 }
 
 service InvitesEventsService {
-    rpc getInviteByIdEvent(InviteEvent) returns (Invite) {}
-    rpc searchInvitesEvent(SearchInvitesParams) returns (stream Invite) {}
-    rpc createInviteEvent(InviteEvent) returns (Invite) {}
-    rpc deleteInviteByIdEvent(InviteEvent) returns (Invite) {}
-    rpc deleteInviteByUserIdAndProjectIdEvent(ProjectIdAndUserIdEvent) returns (Invite) {}
+    rpc getInviteByIdEvent(InviteEvent) returns (google.protobuf.Empty) {}
+    rpc searchInvitesEvent(SearchInvitesParams) returns (google.protobuf.Empty) {}
+    rpc createInviteEvent(InviteEvent) returns (google.protobuf.Empty) {}
+    rpc deleteInviteByIdEvent(InviteEvent) returns (google.protobuf.Empty) {}
+    rpc deleteInviteByUserIdAndProjectIdEvent(ProjectIdAndUserIdEvent) returns (google.protobuf.Empty) {}
 }
