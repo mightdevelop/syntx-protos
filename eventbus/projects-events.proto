@@ -54,3 +54,38 @@ service ProjectsEventsService {
     rpc addUserToProject(AddOrRemoveUserFromProjectEvent) returns (google.protobuf.Empty) {}
     rpc removeUserFromProject(AddOrRemoveUserFromProjectEvent) returns (google.protobuf.Empty) {}
 }
+
+message Invite {
+    optional string id = 1;
+    optional string email = 2;
+    optional string name = 3;
+    optional string password = 4;
+    optional string salt = 5;
+}
+
+message InviteEvent {
+    optional Error error = 1;
+    Invite invite = 2;
+}
+
+message SearchInvitesParams {
+    optional string userId = 1;
+    optional string projectId = 2;
+    repeated string invitesIds = 3;
+    optional int32 limit = 4;
+    optional int32 offset = 5;
+}
+
+message SearchInvitesEvent {
+    optional Error error = 1;
+    SearchInvitesParams searchParams = 2;
+    repeated Invite invites = 3;
+}
+
+service InvitesEventsService {
+    rpc getInviteByIdEvent(InviteEvent) returns (Invite) {}
+    rpc searchInvitesEvent(SearchInvitesParams) returns (stream Invite) {}
+    rpc createInviteEvent(InviteEvent) returns (Invite) {}
+    rpc deleteInviteByIdEvent(InviteEvent) returns (Invite) {}
+    rpc deleteInviteByUserIdAndProjectIdEvent(ProjectIdAndUserId) returns (Invite) {}
+}
