@@ -7,10 +7,8 @@ import "common.proto";
 
 message Project {
     optional string id = 1;
-    optional string email = 2;
-    optional string name = 3;
-    optional string password = 4;
-    optional string salt = 5;
+    optional string name = 2;
+    optional string leadId = 3;
 }
 
 message ProjectEvent {
