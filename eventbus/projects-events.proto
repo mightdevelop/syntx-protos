@@ -49,8 +49,8 @@ service ProjectsEventsService {
     rpc createProjectEvent(ProjectEvent) returns (google.protobuf.Empty) {}
     rpc updateProjectEvent(ProjectEvent) returns (google.protobuf.Empty) {}
     rpc deleteProjectEvent(ProjectEvent) returns (google.protobuf.Empty) {}
-    rpc addUserToProject(AddOrRemoveUserFromProjectEvent) returns (google.protobuf.Empty) {}
-    rpc removeUserFromProject(AddOrRemoveUserFromProjectEvent) returns (google.protobuf.Empty) {}
+    rpc addUserToProjectEvent(AddOrRemoveUserFromProjectEvent) returns (google.protobuf.Empty) {}
+    rpc removeUserFromProjectEvent(AddOrRemoveUserFromProjectEvent) returns (google.protobuf.Empty) {}
 }
 
 message Invite {
@@ -82,5 +82,5 @@ service InvitesEventsService {
     rpc getInviteByIdEvent(InviteEvent) returns (google.protobuf.Empty) {}
     rpc searchInvitesEvent(SearchInvitesEvent) returns (google.protobuf.Empty) {}
     rpc createInviteEvent(InviteEvent) returns (google.protobuf.Empty) {}
-    rpc deleteInviteByIdEvent(InviteEvent) returns (google.protobuf.Empty) {}
+    rpc deleteInviteEvent(InviteEvent) returns (google.protobuf.Empty) {}
 }

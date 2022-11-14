@@ -67,6 +67,13 @@ message InviteId {
     string inviteId = 1;
 }
 
+message DeleteInviteRequest {
+    oneof data {
+        ProjectIdAndUserId projectIdAndUserId = 1;
+        string inviteId = 2;
+    }
+}
+
 message SearchInvitesParams {
     optional string userId = 1;
     optional string projectId = 2;
@@ -79,6 +86,5 @@ service InvitesService {
     rpc getInviteById(InviteId) returns (Invite) {}
     rpc searchInvites(SearchInvitesParams) returns (stream Invite) {}
     rpc createInvite(ProjectIdAndUserId) returns (Invite) {}
-    rpc deleteInviteById(InviteId) returns (Invite) {}
-    rpc deleteInviteByUserIdAndProjectId(ProjectIdAndUserId) returns (Invite) {}
+    rpc deleteInvite(DeleteInviteRequest) returns (Invite) {}
 }
