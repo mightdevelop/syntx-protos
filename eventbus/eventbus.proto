@@ -3,11 +3,42 @@ syntax = "proto3";
 package eventbus;
 
 import "users-events.proto";
+import "issues-events.proto";
+import "projects-events.proto";
+import "roles-events.proto";
 
 message Event {
     oneof event {
         UserEvent userEvent = 1;
         SearchUsersEvent searchUsersEvent = 2;
+
+        BoardEvent boardEvent = 3;
+
+        ColumnEvent columnEvent = 4;
+        SearchColumnsEvent searchColumnsEvent = 5;
+
+        IssueEvent issueEvent = 6;
+        SearchIssuesEvent searchIssuesEvent = 7;
+
+        EpicEvent epicEvent = 8;
+        SearchEpicsEvent searchEpicsEvent = 9;
+
+        DependencyEvent dependencyEvent = 10;
+        SearchDependenciesEvent searchDependenciesEvent = 11;
+
+        ProjectEvent projectEvent = 12;
+        SearchProjectsEvent searchProjectsEvent = 13;
+        AddOrRemoveUserFromProjectEvent addOrRemoveUserFromProjectEvent = 14;
+        IsUserProjectParticipantEvent isUserProjectParticipantEvent = 15;
+
+        InviteEvent inviteEvent = 16;
+        SearchInvitesEvent searchInvitesEvent = 17;
+
+        RoleEvent roleEvent = 18;
+        SearchRolesEvent searchRolesEvent = 19;
+
+        PermissionEvent permissionEvent = 20;
+        SearchPermissionsEvent searchPermissionsEvent = 21;
     }
 }
 
