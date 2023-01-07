@@ -25,10 +25,8 @@ service BoardsEventsService {
 
 message Column {
     optional string id = 1;
-    optional string email = 2;
+    optional string boardId = 2;
     optional string name = 3;
-    optional string password = 4;
-    optional string salt = 5;
 }
 
 message ColumnEvent {
@@ -59,10 +57,10 @@ service ColumnsEventsService {
 
 message Issue {
     optional string id = 1;
-    optional string email = 2;
-    optional string name = 3;
-    optional string password = 4;
-    optional string salt = 5;
+    optional string columnId = 2;
+    optional string epicId = 3;
+    optional string title = 4;
+    optional string description = 5;
 }
 
 message IssueEvent {
@@ -94,10 +92,13 @@ service IssuesEventsService {
 
 message Epic {
     optional string id = 1;
-    optional string email = 2;
-    optional string name = 3;
-    optional string password = 4;
-    optional string salt = 5;
+    optional string columnId = 2;
+    optional string assigneeId = 3;
+    optional string reporterId = 4;
+    optional string name = 5;
+    optional string description = 6;
+    optional string startDate = 7;
+    optional string dueDate = 8;
 }
 
 message EpicEvent {
@@ -130,10 +131,8 @@ service EpicsEventsService {
 
 message Dependency {
     optional string id = 1;
-    optional string email = 2;
-    optional string name = 3;
-    optional string password = 4;
-    optional string salt = 5;
+    optional string blockingEpicId = 2;
+    optional string blockedEpicId = 3;
 }
 
 message DependencyEvent {
